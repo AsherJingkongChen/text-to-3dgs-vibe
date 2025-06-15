@@ -96,12 +96,15 @@ async fn main() -> Result<()> {
     eprintln!("🎉🎉🎉 Hooray! The entire pipeline is complete. Your 3DGS model is ready in 'output.ply'!");
     eprintln!("--- Step 3: Launching brush viewer ---");
 
-    let brush_executable = "./tools/brush/target/debug/brush_app";
+    let brush_executable = "./tools/brush/target/release/brush_app";
 
     if !std::path::Path::new(brush_executable).exists() {
         eprintln!("'brush_app' not found, compiling it first...");
         let build_status = Command::new("cargo")
             .arg("build")
+            .arg("--release")
+            .arg("--bin")
+            .arg("brush_app")
             .current_dir("./tools/brush")
             .status()
             .wrap_err("Failed to build brush viewer")?;
