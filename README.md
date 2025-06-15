@@ -12,22 +12,13 @@
 
 ## Project Structure
 
-The repository is organized into two main categories: core libraries (`crates`) and executable applications (`tools`).
+The repository is organized into a collection of executable applications in the `tools` directory.
 
 ```mermaid
 graph TD;
     subgraph Text-to-3DGS Vibe
         direction LR
-        A(crates)
         B(tools)
-    end
-
-    subgraph Core Libraries
-        direction TB
-        A --> lib1(gausplat)
-        A --> lib2(gausplat-loader)
-        A --> lib3(gausplat-renderer)
-        A --> lib4(gausplat-trainer)
     end
 
     subgraph Executable Tools
@@ -39,8 +30,7 @@ graph TD;
     end
 ```
 
--   **`crates/`**: Contains the foundational libraries for 3DGS data handling, rendering logic, and training. These are the building blocks of the project.
--   **`tools/`**: Contains standalone applications that use the core libraries to perform specific tasks.
+-   **`tools/`**: Contains standalone applications that perform specific tasks in the Text-to-3DGS pipeline.
 
 ## Getting Started
 
