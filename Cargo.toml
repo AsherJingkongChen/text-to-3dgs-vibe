@@ -4,7 +4,6 @@ exclude = [
   "tools/brush",
 ]
 members = [
-  "crates/*",
   "tools/*",
 ]
 resolver = "2"
@@ -18,11 +17,6 @@ rust-version = "1.83.0"
 version = "0.0.0+alpha"
 
 [workspace.dependencies]
-gausplat = {path = "crates/gausplat"}
-gausplat-loader = {path = "crates/gausplat-loader"}
-gausplat-renderer = {path = "crates/gausplat-renderer"}
-gausplat-trainer = {path = "crates/gausplat-trainer"}
-
 # burn = {version = "0.17.1", default-features = false}
 # burn-jit = {version = "0.17.1", default-features = false}
 # burn-ndarray = {version = "0.17.1", default-features = false}
