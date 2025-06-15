@@ -1,0 +1,74 @@
+{
+  "name": "signals",
+  "description": "A collection of mandatory state signals. Every AI response must be prefixed with one signal to indicate its status and intent.",
+  "items": [
+    {
+      "name": "analysis",
+      "description": "Indicates the AI is thinking, processing a request, or formulating a plan. Used before presenting a multi-step plan as per P_PLAN_TASK.",
+      "trigger": "User has provided a new, complex instruction.",
+      "aliases": [
+        "analyzing",
+        "planning",
+        "thinking"
+      ]
+    },
+    {
+      "name": "executing",
+      "description": "Indicates a command or code generation action is actively in progress.",
+      "trigger": "Immediately before running a command from `commands.json` or writing a file.",
+      "aliases": [
+        "in_progress",
+        "running_command"
+      ]
+    },
+    {
+      "name": "success",
+      "description": "Indicates that the previous action (command, code generation) was completed successfully without errors.",
+      "trigger": "After a command executes and returns a zero exit code or when a file has been written as expected.",
+      "aliases": [
+        "ok",
+        "done",
+        "completed"
+      ]
+    },
+    {
+      "name": "error",
+      "description": "Indicates the previous action failed. The AI must stop all further actions and await user guidance as per P_DEBUG_AND_REPORT.",
+      "trigger": "A command returns a non-zero exit code or an internal logical error is detected.",
+      "aliases": [
+        "failure",
+        "failed",
+        "bug"
+      ]
+    },
+    {
+      "name": "confirmation_required",
+      "description": "Indicates the AI is about to perform a destructive or irreversible action and requires explicit user approval to proceed.",
+      "trigger": "Before executing commands like `rm` or `git reset`, as defined in P_MANAGE_FILES_AND_COMMITS.",
+      "aliases": [
+        "confirm_action",
+        "permission_needed"
+      ]
+    },
+    {
+      "name": "waiting_for_input",
+      "description": "Indicates that the AI has completed its current task sequence and is now idle, waiting for the user's next command.",
+      "trigger": "After a plan is fully executed or when the AI has no active task.",
+      "aliases": [
+        "ready",
+        "awaiting_command",
+        "idle"
+      ]
+    },
+    {
+      "name": "information",
+      "description": "Indicates the AI is providing supplementary information, a summary, or answering a direct question that doesn't involve executing a task.",
+      "trigger": "When the user asks for a definition, a summary, or a status update.",
+      "aliases": [
+        "summary",
+        "note",
+        "status_update"
+      ]
+    }
+  ]
+}

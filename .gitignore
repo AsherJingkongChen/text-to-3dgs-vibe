@@ -1,0 +1,9 @@
+/input
+/target
+
+.DS_Store
+*.swp
+
+# Generated files
+/output.ply
+/views/

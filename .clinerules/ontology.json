@@ -1,0 +1,66 @@
+{
+  "name": "ontology",
+  "description": "A dictionary of mandatory technical terms and concepts for the interactive 3D Gaussian Splatting rendering engine project.",
+  "items": [
+    {
+      "term": "3D Gaussian Splatting",
+      "definition": "A point-based, volumetric rendering technique. It represents scenes with a large number of 3D Gaussians, which are sorted and 'splatted' onto the screen. This project aims to implement it from scratch."
+    },
+    {
+      "term": "WebGPU",
+      "definition": "The modern graphics and compute API for the web. It is the sole API for this project, providing low-level access to the GPU."
+    },
+    {
+      "term": "WGSL",
+      "definition": "WebGPU Shading Language. The only shading language to be used. It is used for both compute shaders and the vertex/fragment stages of a rendering pipeline."
+    },
+    {
+      "term": "Compute Shader",
+      "definition": "A program written in WGSL that runs on the GPU for general-purpose parallel computation. Essential for tasks like sorting the Gaussians, culling, and other data-parallel algorithms outside of traditional rendering."
+    },
+    {
+      "term": "Rendering Pipeline",
+      "definition": "The WebGPU `GPURenderPipeline`. It's a state object that defines the process of drawing geometry, including the vertex shader, fragment shader, and blending states. It's distinct from a compute pipeline."
+    },
+    {
+      "term": "Binding",
+      "definition": "The mechanism in WebGPU (`GPUBindGroup` and `GPUBindGroupLayout`) for making resources like GPU buffers and textures available to shaders (both compute and rendering)."
+    },
+    {
+      "term": "Mapping",
+      "definition": "The asynchronous process (`mapAsync`) of making a GPU buffer's memory accessible to the CPU for reading or writing."
+    },
+    {
+      "term": "GPU Buffer Layout",
+      "definition": "The explicit memory organization of data (e.g., structs) within a GPU buffer. Must respect WGSL's memory layout rules, including size and alignment for data types, to ensure CPU and GPU data structures match."
+    },
+    {
+      "term": "Parallel Computing",
+      "definition": "The core principle of using the GPU's thousands of cores to perform many calculations simultaneously. Algorithms like parallel scan and sort are fundamental to this project."
+    },
+    {
+      "term": "Scan and Sort",
+      "definition": "A class of parallel algorithms critical for rendering. For this project, a GPU-based radix sort will be implemented in a compute shader to order the 3D Gaussians by depth before splatting."
+    },
+    {
+      "term": "Volumetric Rendering",
+      "definition": "A rendering technique for objects without clear surfaces, like clouds or smoke. 3D Gaussian Splatting is a form of volumetric rendering."
+    },
+    {
+      "term": "Orbit Control",
+      "definition": "A common camera control scheme for 3D applications where the camera rotates around a central pivot point. This will be the primary method for user interaction."
+    },
+    {
+      "term": "TypeScript",
+      "definition": "The primary programming language for all client-side logic that orchestrates WebGPU operations. Its type safety is critical for managing complex GPU interactions."
+    },
+    {
+      "term": "Well Documentation",
+      "definition": "A strict requirement for all generated code. This includes: 1. File-level header comments. 2. Type annotations for all functions and variables (`// @ts-check` is not sufficient). 3. Comments explaining the purpose of complex algorithms or non-obvious code. They are in the folder ./docs/."
+    },
+    {
+      "term": "Reference Implementation",
+      "definition": "The reference implementation of 3D Gaussian Splatting in WGSL (Rust) is available at the directory ./ref/kernel. It serves as a guide for implementing the same algorithms in WebGPU and WGSL."
+    }
+  ]
+}

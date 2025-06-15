@@ -1,0 +1,7 @@
+[submodule "tools/view-to-3dgs"]
+	path = tools/view-to-3dgs
+	url = https://github.com/AsherJingkongChen/peropero.git
+
+[submodule "tools/brush"]
+	path = tools/brush
+	url = https://github.com/ArthurBrussee/brush.git

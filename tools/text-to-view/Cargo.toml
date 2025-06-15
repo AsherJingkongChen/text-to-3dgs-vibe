@@ -1,0 +1,14 @@
+[package]
+name = "text-to-view"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+reqwest = { version = "0.12.20", features = ["json", "stream"] }
+serde = { version = "1.0.203", features = ["derive"] }
+serde_json = "1.0.117"
+tokio = { version = "1.45.1", features = ["full"] }
+color-eyre = "0.6.3"
+video-rs = "0.10.3"
+image = "0.25.6"
+futures = "0.3.30"

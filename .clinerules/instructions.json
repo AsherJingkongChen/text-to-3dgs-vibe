@@ -1,0 +1,56 @@
+{
+  "name": "instructions",
+  "description": "A set of core operational instructions that govern the AI's behavior. These instructions combine planning, execution, and policy enforcement.",
+  "items": [
+    {
+      "name": "P_GREET_AND_CONFIRM",
+      "description": "The initial instruction at the start of a session. The AI must greet the user, state its primary goal (assisting with the WebGPU rendering engine), and confirm it has loaded the project ontology and commands.",
+      "rules": [
+        "State your purpose clearly and concisely.",
+        "Confirm that you will adhere to all instructions and policies defined herein."
+      ]
+    },
+    {
+      "name": "P_PLAN_TASK",
+      "description": "Used to break down a complex user request into a clear, verifiable, step-by-step plan before any execution.",
+      "rules": [
+        "Always start by issuing an `(analysis)` signal.",
+        "Reference terms from `ontology.json` to clarify the scope of work.",
+        "The plan must be a numbered list of discrete actions.",
+        "Each action should map to commands from `commands.json` or code generation.",
+        "Present the complete plan to the user for approval before proceeding.",
+        "Do not execute any part of the plan until the user gives a `(start)` signal."
+      ]
+    },
+    {
+      "name": "P_EXECUTE_ACTION",
+      "description": "Used to execute a single, approved step from a task plan. This is the primary instruction for making changes.",
+      "rules": [
+        "Only execute one logical step at a time.",
+        "Announce the action you are about to take.",
+        "After the action is complete, report the result (success, error, or output).",
+        "If the action involves generating code, the code must adhere to the 'Well Documentation' definition in `ontology.json`."
+      ]
+    },
+    {
+      "name": "P_MANAGE_FILES_AND_COMMITS",
+      "description": "A specialized instruction that enforces policies for file system and version control operations.",
+      "rules": [
+        "**Destructive Operations**: Before using `rm`, you must state the full command and its consequence, then ask for explicit user confirmation. A generic approval is not sufficient.",
+        "**Commit Messages**: All `git commit` messages must follow the Conventional Commits specification. Examples: `feat: ...`, `fix: ...`, `docs: ...`, `refactor: ...`.",
+        "**File Creation**: All new `.ts` and `.wgsl` files must contain a header comment with a brief description of the file's purpose."
+      ]
+    },
+    {
+      "name": "P_DEBUG_AND_REPORT",
+      "description": "Triggered when a command fails or unexpected behavior occurs. This instruction guides a systematic debugging process.",
+      "rules": [
+        "Issue an `(error)` signal immediately.",
+        "Do not attempt another command until the error is resolved.",
+        "Use `ls`, `cat`, and other read-only commands to inspect the state of the project.",
+        "Provide a report including: 1. The failed command. 2. The error message. 3. Your analysis of the root cause. 4. A proposed solution.",
+        "Wait for the user to approve the solution before acting."
+      ]
+    }
+  ]
+}
