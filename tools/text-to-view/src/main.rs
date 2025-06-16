@@ -281,7 +281,7 @@ fn extract_frames(video_path: &Path) -> Result<()> {
     fs::create_dir_all(output_dir)?;
 
     let frame_rate = Decoder::new(video_path)?.frame_rate();
-    let timestamps = [0.3, 0.7, 2.3, 2.7, 4.3, 4.7];
+    let timestamps = [0.0, 0.5, 1.5, 2.5, 3.5, 4.5];
 
     for (i, &time_sec) in timestamps.iter().enumerate() {
         let mut decoder = Decoder::new(video_path)
