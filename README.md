@@ -10,6 +10,8 @@
 
 **Text-to-3DGS Vibe** is a project aimed at creating a complete pipeline for generating and rendering 3D Gaussian Splatting (3DGS) scenes from simple text descriptions. It leverages the Google Veo API for video generation and a custom Rust-based toolchain for processing and rendering.
 
+https://github.com/user-attachments/assets/c67a803b-a339-4283-9bdf-9f27e63b6a29
+
 ## Project Structure
 
 The repository is organized into a collection of executable applications in the `tools` directory.
