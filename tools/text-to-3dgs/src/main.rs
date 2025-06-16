@@ -93,7 +93,7 @@ async fn main() -> Result<()> {
     // Step 2: Reconstruct 3DGS model from views
     run_view_to_3dgs().await?;
 
-    eprintln!("🎉🎉🎉 Hooray! The entire pipeline is complete. Your 3DGS model is ready in 'output.ply'!");
+    eprintln!("Hooray! The entire pipeline is complete. Your 3DGS model is ready in 'output.ply'!");
     eprintln!("--- Step 3: Launching brush viewer ---");
 
     let brush_executable = "./tools/brush/target/release/brush_app";
@@ -102,9 +102,10 @@ async fn main() -> Result<()> {
         eprintln!("'brush_app' not found, compiling it first...");
         let build_status = Command::new("cargo")
             .arg("build")
-            .arg("--release")
             .arg("--bin")
             .arg("brush_app")
+            .arg("--locked")
+            .arg("--release")
             .current_dir("./tools/brush")
             .status()
             .wrap_err("Failed to build brush viewer")?;
@@ -118,6 +119,8 @@ async fn main() -> Result<()> {
     let status = Command::new(brush_executable)
         .arg("output.ply")
         .arg("--with-viewer")
+        .arg("--sh-degree")
+        .arg("0")
         .status()
         .wrap_err("Failed to execute brush viewer")?;
 
